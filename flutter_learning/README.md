@@ -8,7 +8,7 @@ This project demonstrates:
 - Simple widget demo and a reactive counter app
 - Hot Reload functionality
 
-## 1. Flutter Architecture
+## 1. Flutter Architecturesdfghjkl
 See `docs/FLUTTER_ARCHITECTURE.md` for a summary of the three core layers:
 - **Framework Layer**: Dart code, widgets, state management
 - **Engine Layer**: C++ code, Skia rendering, Dart runtime
