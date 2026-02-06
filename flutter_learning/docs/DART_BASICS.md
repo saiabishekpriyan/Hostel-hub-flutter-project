@@ -3,7 +3,7 @@
 ## Why Dart for Flutter?
 - Dart is optimized for UI: fast, predictable, and supports both JIT (for Hot Reload) and AOT (for release builds).
 - Easy to learn for those familiar with Java, JavaScript, or C#.
-- Strong typing, null safety, async/await, and modern OOP features.
+- Strong typing, null safety, async/await, and modern OOP feats.
 
 ## Classes and Objects
 ```dart
