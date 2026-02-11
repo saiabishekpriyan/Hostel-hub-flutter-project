@@ -35,3 +35,33 @@ A standardized and modular structure ensures that:
 - **Onboarding is faster**: New team members can immediately understand the project layout.
 - **Conflicts are minimized**: Separation of concerns (e.g., separating UI from business logic) reduces merge conflicts.
 - **Scalability is easier**: Features can be added without cluttering the codebase, maintaining a clean and maintainable project.
+
+## Sprint 2: Widget Tree & Reactive UI
+
+### Profile Card Demo
+A simple app demonstrating a hierarchical widget tree and state management. The "Profile Card" allows users to toggle the visibility of contact details.
+
+### Widget Tree Diagram
+```
+MaterialApp
+ ┗ Scaffold
+    ┣ AppBar
+    ┗ Body
+       ┗ Center
+          ┗ Container
+             ┗ Column
+                ┣ CircleAvatar
+                ┣ Text (Name)
+                ┣ Text (Bio)
+                ┣ ElevatedButton (Toggle)
+                ┗ (Conditional) Column
+                   ┗ Row (Detail)
+```
+
+### Reflection
+
+#### How does the widget tree help Flutter manage complex UIs?
+The widget tree breaks down complex interfaces into small, reusable, and nested components. This composition model allows developers to build sophisticated UIs by combining simple widgets (like `Row`, `Column`, `Container`) in a structured hierarchy, making the code readable and manageable.
+
+#### Why is Flutter’s reactive model more efficient than manually updating views?
+In a reactive model, the UI is a function of the state. When `setState()` is called, Flutter marks the widget as "dirty" and automatically rebuilds only the parts of the UI that need to change. This eliminates the need to manually track and update individual DOM elements or views (unidirectional data flow), reducing bugs and improving performance.
