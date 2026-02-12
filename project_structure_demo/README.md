@@ -131,3 +131,47 @@ Flutter uses a "reconciliation" process. When `setState()` is called, Flutter ma
 1. **Performance**: Avoids unnecessary rebuilds of static content.
 2. **Clarity**: Clearly separates "view-only" components from "logic-heavy" interactive components.
 3. **Maintainability**: Makes it obvious where state is being managed and updated.
+
+---
+
+## Sprint 4: Flutter Development Tools
+
+### 1. Hot Reload in Action
+Hot Reload allows us to change the UI instantly without losing the app state.
+
+**Scenario:** Changing the header background color.
+- **Before:** `color: Colors.deepPurple.withOpacity(0.1)`
+- **After:** `color: Colors.blue.withOpacity(0.1)` (Applied instantly via `r` in terminal or Save in IDE).
+
+**Impact:** The counter value is preserved even after the header color changes, demonstrating that only the UI is rebuilt while state remains intact.
+
+### 2. Debug Console & Logging
+We use `debugPrint()` to monitor app behavior and state transitions.
+
+**Logs captured during interaction:**
+```text
+I/flutter (1234): Counter incremented: 1
+I/flutter (1234): Counter incremented: 2
+I/flutter (1234): Theme toggled. Dark Mode: true
+I/flutter (1234): Theme toggled. Dark Mode: false
+```
+The Debug Console is essential for tracing logic flow and catching runtime errors without interrupting the user experience.
+
+### 3. Flutter DevTools Overview
+Flutter DevTools provides deep insights into the app's performance and structure.
+
+- **Widget Inspector:** Visualizes the widget tree (Scaffold > Column > StatelessHeader ...). It helps identify padding issues and widget nesting.
+- **Performance Panel:** Shows frame render times (FPS). Essential for detecting "jank" and ensuring 60fps animations.
+- **Memory Tracker:** Helps detect memory leaks by showing object allocation over time.
+
+### Reflection
+
+#### How does Hot Reload improve development speed?
+Hot Reload reduces the feedback loop from seconds to milliseconds. Developers can experiment with UI layouts, colors, and minor logic fixes instantly without waiting for a full Gradle/Xcode build, which significantly increases productivity.
+
+#### Why are debugging and profiling essential for app optimization?
+- **Debugging** catches logical flaws and crashes early.
+- **Profiling** identifies performance bottlenecks (e.g., expensive build methods or heavy animations) that aren't obvious during normal development but affect the end-user experience.
+
+#### How can these tools be integrated into a team workflow?
+Teams can use the **Widget Inspector** during code reviews to verify UI architecture, and use **Performance metrics** as a benchmark for merge requests to ensure new features don't degrade the app's speed.
