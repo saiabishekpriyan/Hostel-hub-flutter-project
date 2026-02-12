@@ -99,10 +99,9 @@ class _StatefulCounterSectionState extends State<StatefulCounterSection> {
   int _counter = 0;
 
   void _incrementCounter() {
-    // setState notifies the framework that the internal state of this object has changed
-    // causing the framework to schedule a build for this State object.
     setState(() {
       _counter++;
+      debugPrint('Counter incremented: $_counter');
     });
   }
 
@@ -200,6 +199,7 @@ class _StatefulColorToggleState extends State<StatefulColorToggle> {
                   onChanged: (value) {
                     setState(() {
                       _isToggled = value;
+                      debugPrint('Theme toggled. Dark Mode: $_isToggled');
                     });
                   },
                   activeColor: Colors.amber,
