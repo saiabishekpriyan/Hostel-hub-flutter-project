@@ -175,3 +175,50 @@ Hot Reload reduces the feedback loop from seconds to milliseconds. Developers ca
 
 #### How can these tools be integrated into a team workflow?
 Teams can use the **Widget Inspector** during code reviews to verify UI architecture, and use **Performance metrics** as a benchmark for merge requests to ensure new features don't degrade the app's speed.
+
+---
+
+## Sprint 5: Responsive Layouts
+
+### Dashboard Design
+In this sprint, we designed a responsive dashboard layout using Flutter's core layout widgets: `Row`, `Column`, and `Container`. The layout dynamicially adapts to the screen size, providing an optimal user experience on both mobile and desktop/tablet devices.
+
+### Core Layout Widgets Used
+
+#### 1. Container
+The `Container` widget is used as a flexible box for styling, padding, and structuring individual sections of the dashboard.
+```dart
+Container(
+  width: double.infinity,
+  padding: const EdgeInsets.all(20),
+  decoration: BoxDecoration(
+    color: Colors.indigoAccent,
+    borderRadius: BorderRadius.circular(12),
+  ),
+  child: Column(...),
+)
+```
+
+#### 2. Row & Column
+We used `Row` for horizontal arrangements (side-by-side panels on large screens) and `Column` for vertical stacking (on mobile screens).
+```dart
+// Dynamic switching based on width
+isMobile
+  ? Column(children: [PanelA(), PanelB()])
+  : Row(children: [PanelA(), PanelB()])
+```
+
+### Managing Responsiveness
+We utilized `MediaQuery` to detect the screen width and `Expanded` widgets to ensure that panels fill the available space proportionally.
+
+### Reflection
+
+#### Why is responsiveness important in mobile apps?
+Responsiveness ensures that an application is usable and visually appealing across a vast array of devices, from small smartphones to large tablets and desktop browsers. It eliminates issues like overlapping widgets, cut-off text, and awkward whitespace.
+
+#### What challenges did you face while managing layout proportions?
+One challenge was ensuring that the transition between stacked and side-by-side layouts felt smooth. Using `Expanded` widgets within both `Row` and `Column` helped maintain consistent proportions without hardcoding fixed widths.
+
+#### How can you improve your layout for different screen orientations?
+Future improvements could include using `LayoutBuilder` for even more granular control based on parent constraints, or implementing a more sophisticated grid system (like `GridView`) for dashboards with many smaller components.
+
