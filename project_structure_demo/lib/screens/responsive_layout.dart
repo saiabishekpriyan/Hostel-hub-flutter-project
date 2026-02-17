@@ -14,6 +14,18 @@ class ResponsiveLayout extends StatelessWidget {
         title: const Text('Responsive Dashboard'),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.list_alt),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ScrollableViews()),
+              );
+            },
+            tooltip: 'Scrollable Views Demo',
+          ),
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
