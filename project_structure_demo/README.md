@@ -222,3 +222,59 @@ One challenge was ensuring that the transition between stacked and side-by-side 
 #### How can you improve your layout for different screen orientations?
 Future improvements could include using `LayoutBuilder` for even more granular control based on parent constraints, or implementing a more sophisticated grid system (like `GridView`) for dashboards with many smaller components.
 
+---
+
+## Sprint 6: Scrollable Views
+
+### ListView & GridView Demo
+In this sprint, we implemented a dedicated screen to showcase vertical and horizontal scrolling using `ListView` and `GridView`. This is essential for handling large datasets and creating dynamic layouts like image galleries or message lists.
+
+### Implementation Details
+
+#### 1. ListView.builder (Horizontal)
+Used for creating a scrollable list of items that are rendered on demand.
+```dart
+ListView.builder(
+  scrollDirection: Axis.horizontal,
+  itemCount: 10,
+  itemBuilder: (context, index) {
+    return Container(
+      width: 160,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      child: Center(child: Text('Card ${index + 1}')),
+    );
+  },
+)
+```
+
+#### 2. GridView.builder (Vertical)
+Used for displaying items in a grid layout. We used `NeverScrollableScrollPhysics` and `shrinkWrap: true` to nest it within a `SingleChildScrollView`.
+```dart
+GridView.builder(
+  physics: const NeverScrollableScrollPhysics(),
+  shrinkWrap: true,
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    crossAxisSpacing: 12,
+    mainAxisSpacing: 12,
+  ),
+  itemCount: 8,
+  itemBuilder: (context, index) {
+    return Container(child: Center(child: Text('Item ${index + 1}')));
+  },
+)
+```
+
+### Reflection
+
+#### How do ListView and GridView improve UI efficiency?
+`ListView` and `GridView` allow for the display of many items without cluttering the screen or requiring manual placement of each widget. They manage the layout and scrolling behavior automatically, providing a consistent user experience regardless of the number of items.
+
+#### Why is using builder constructors (ListView.builder, GridView.builder) recommended for large data sets?
+The `.builder` constructors use a "lazy loading" mechanism. Instead of creating all items at once, they only build the widgets that are currently visible on the screen. This significantly reduces memory usage and initial load time, especially when dealing with hundreds or thousands of items.
+
+#### What are common performance pitfalls to avoid with scrolling views?
+1. **Building expensive widgets**: Ensure the `itemBuilder` is efficient.
+2. **Nesting scrollable views incorrectly**: Avoid nesting multiple scrollable widgets without proper constraints (e.g., using `shrinkWrap: true` excessively can lead to performance issues as it calculates the entire size).
+3. **Missing keys**: Use keys for items if the list can change dynamically to help Flutter identify which widgets need rebuilding.
+
