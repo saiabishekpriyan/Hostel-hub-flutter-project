@@ -47,8 +47,62 @@ The **Welcome Screen** provides a simple and friendly entry point for users.
 - **Dart State Management:** I understood the difference between `StatelessWidget` and `StatefulWidget`. Using `setState()` allowed me to update the UI dynamically (changing button text/color) when the state changed.
 - **Future Structure:** By organizing code into `screens` and `widgets` now, it will be much easier to integrate Firebase and add complex features like authentication and database streams in future sprints without cluttering a single file.
 
-## 📸 Demo Screenshot
 *(Place your screenshot here)*
+
+---
+
+## 📝 Handling User Input (Sprint Learning)
+
+In this lesson, I implemented a custom form to handle user input efficiently.
+
+### 🛠️ Key Components Used
+- **`TextField` / `TextFormField`**: Used to capture user data like name and email. `TextFormField` was preferred for its built-in integration with `Form` validation.
+- **`ElevatedButton`**: Acts as the submission trigger, executing validation logic and providing feedback.
+- **`Form` & `GlobalKey<FormState>`**: Managed the state of the multiple input fields and coordinated the validation process.
+
+### 💻 Code Snippets
+
+**Input Validation Logic:**
+```dart
+TextFormField(
+  controller: _emailController,
+  decoration: InputDecoration(labelText: 'Email'),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    } else if (!value.contains('@')) {
+      return 'Enter a valid email address';
+    }
+    return null;
+  },
+)
+```
+
+**Form Submission & Feedback:**
+```dart
+onPressed: () {
+  if (_formKey.currentState!.validate()) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Form Submitted Successfully!')),
+    );
+  }
+}
+```
+
+### 🧠 Reflections
+
+**1. Why is input validation important in mobile apps?**
+Input validation is crucial because it ensures the data collected is accurate, complete, and formatted correctly before it reaches the backend or is processed by the app. It prevents bugs, crashes from unexpected null values, and improves security by filtering out malicious or nonsensical input. It also provides immediate feedback to the user, making the app feel more robust and professional.
+
+**2. What’s the difference between `TextField` and `TextFormField`?**
+- `TextField` is a basic input widget that allows user text entry but doesn't have built-in validation logic handled by a `Form`.
+- `TextFormField` is a wrapper around `TextField` that adds additional features like the `validator` property and `onSaved` callback. It integrates seamlessly with the `Form` widget, allowing you to validate multiple fields at once using a `FormState` key.
+
+**3. How does form state management simplify validation?**
+Form state management (via `GlobalKey<FormState>`) allows you to treat a group of input fields as a single unit. Instead of checking each controller manually, you can call `_formKey.currentState!.validate()`, which automatically triggers the `validator` function of every `TextFormField` within that form. This significantly reduces boilerplate code and ensures a consistent user experience during submission.
+
+## 📸 Form Screenshots
+*(Add your screenshots here: Initial Form, Validation Errors, Success SnackBar)*
 
 ---
 

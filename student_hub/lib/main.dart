@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/welcome_screen.dart';
+import 'screens/user_input_form.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,10 +19,12 @@ class StudentHubApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'StudentHub',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
-      home: const WelcomeScreen(),
+      home: const UserInputForm(),
     );
   }
 }
