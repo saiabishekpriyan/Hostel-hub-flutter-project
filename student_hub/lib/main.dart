@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/welcome_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/second_screen.dart';
 import 'screens/user_input_form.dart';
 import 'firebase_options.dart';
 
@@ -9,22 +10,26 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const StudentHubApp());
+  runApp(const MyApp());
 }
 
-class StudentHubApp extends StatelessWidget {
-  const StudentHubApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'StudentHub',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const UserInputForm(),
+      initialRoute: '/user-form',
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/second': (context) => SecondScreen(),
+        '/user-form': (context) => const UserInputForm(),
+      },
     );
   }
 }

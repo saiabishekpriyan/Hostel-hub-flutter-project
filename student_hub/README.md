@@ -132,3 +132,51 @@ Form state management (via `GlobalKey<FormState>`) allows you to treat a group o
 
 **Conclusion:**
 "That's the basic setup for StudentHub. Thank you!"
+
+## 🧭 Multi-Screen Navigation (Sprint 2)
+
+This section demonstrates how to manage multiple screens in Flutter using `Navigator` and named routes.
+
+### Files Created
+- `lib/screens/home_screen.dart`: The main landing page.
+- `lib/screens/second_screen.dart`: A secondary page to navigate to.
+- `lib/main.dart`: configured with `initialRoute` and `routes`.
+
+### Code Snippets
+
+**main.dart Route Definition:**
+```dart
+MaterialApp(
+  initialRoute: '/',
+  routes: {
+    '/': (context) => HomeScreen(),
+    '/second': (context) => SecondScreen(),
+  },
+);
+```
+
+**Navigating forward:**
+```dart
+Navigator.pushNamed(context, '/second');
+```
+
+**Navigating back:**
+```dart
+Navigator.pop(context);
+```
+
+### 📸 Screenshots
+| Home Screen | Second Screen |
+|Data to come|Data to come|
+
+### 🧠 Reflection: Navigator & Named Routes
+
+**How Navigator works:**
+Flutter's `Navigator` works like a stack data structure (LIFO - Last In, First Out).
+- `pushNamed` adds a new route to the top of the stack, making it visible.
+- `pop` removes the top route from the stack, revealing the previous screen underneath.
+
+**Benefits of Named Routes:**
+1.  **Readability**: `Navigator.pushNamed(context, '/profile')` is clearer than constructing a `MaterialPageRoute` inline.
+2.  **Centralized Configuration**: All routes are defined in `main.dart`, making it easier to manage and update the app's structure.
+3.  **Deep Linking**: Named routes are essential for handling deep links from web or notifications.
