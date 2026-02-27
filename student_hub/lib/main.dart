@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'screens/home_screen.dart';
 import 'screens/second_screen.dart';
 import 'screens/user_input_form.dart';
+import 'screens/state_management_demo.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -24,11 +25,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/user-form',
+      initialRoute: '/state-demo',
       routes: {
         '/': (context) => HomeScreen(),
         '/second': (context) => SecondScreen(),
         '/user-form': (context) => const UserInputForm(),
+        '/state-demo': (context) => const StateManagementDemo(),
       },
     );
   }

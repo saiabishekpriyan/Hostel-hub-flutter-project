@@ -106,6 +106,56 @@ Form state management (via `GlobalKey<FormState>`) allows you to treat a group o
 
 ---
 
+## ⚡ Managing Local UI State (Sprint Learning)
+
+In this lesson, I learned how to handle dynamic updates in Flutter using `setState()`.
+
+### 🛠️ Key Concepts Implemented
+- **`StatefulWidget`**: Used when the UI needs to change based on internal data updates.
+- **`setState()`**: The primary method to trigger a rebuild of the widget's subtree when the state changes.
+- **Conditional UI Logic**: Implemented logic to change the background color and show a "Goal Reached" message when the counter hit a specific threshold.
+
+### 💻 Code Snippets
+
+**State Update with `setState()`:**
+```dart
+void _incrementCounter() {
+  setState(() {
+    _counter++;
+  });
+}
+```
+
+**Conditional UI Styling:**
+```dart
+Color backgroundColor = _counter >= 5 ? Colors.greenAccent : Colors.white;
+
+return Scaffold(
+  body: AnimatedContainer(
+    duration: Duration(milliseconds: 500),
+    color: backgroundColor,
+    child: Text('Count: $_counter'),
+  ),
+);
+```
+
+### 🧠 Reflections
+
+**1. What’s the difference between Stateless and Stateful widgets?**
+- **StatelessWidget**: These are immutable. Once built, their properties cannot change. They are used for static content like icons, labels, or buttons that don't need to track data changes internally.
+- **StatefulWidget**: These maintain internal state that can change over time. When the state changes, the widget can rebuild itself to reflect the new data. They are used for interactive elements like forms, sliders, and counters.
+
+**2. Why is `setState()` important for Flutter’s reactive model?**
+`setState()` is the "trigger" for Flutter's reactive framework. It tells the framework that the underlying data has changed, and it needs to run the `build()` method again to sync the UI with the new data. Without `setState()`, the data might change in memory, but the user would never see those changes on the screen.
+
+**3. How can improper use of `setState()` affect performance?**
+Calling `setState()` too frequently or in large widgets can lead to performance bottlenecks. It causes the entire widget subtree to rebuild, which can be expensive if the subtree is complex. To optimize, it's best to call `setState()` only when necessary and keep stateful widgets as small as possible (lifting state up only when needed) to minimize the number of rebuilt widgets.
+
+## 📸 State Management Screenshots
+*(Add your screenshots here: Counter at 0, Counter at 5 with Green Background)*
+
+---
+
 ## 📝 PR & Video Guidance
 
 ### suggested Commit Message
