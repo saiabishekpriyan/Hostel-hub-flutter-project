@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/details_screen.dart';
+import 'screens/responsive_demo.dart';
 import 'widgets/like_button.dart';
 
 void main() {
@@ -54,6 +55,16 @@ class DemoNavigationHome extends StatelessWidget {
                 );
               },
               child: Text('Visit Details Screen'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResponsiveDemo()),
+                );
+              },
+              child: Text('Visit Responsive Demo'),
             ),
             SizedBox(height: 30),
             Text('Interaction Example:'),
