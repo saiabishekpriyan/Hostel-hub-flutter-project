@@ -40,5 +40,4 @@ See `docs/DART_BASICS.md` for:
 - Build reactive UIs with setState()
 - Use Hot Reload for rapid development
 
----
-Happy Flutter learning!!!!!!
+
