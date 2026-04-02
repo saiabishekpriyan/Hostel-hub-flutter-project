@@ -1,0 +1,22 @@
+﻿On branch feature/responsive-design
+Your branch is up to date with 'origin/feature/responsive-design'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both added:      README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+	modified:   HostelHub (modified content, untracked content)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	status.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
