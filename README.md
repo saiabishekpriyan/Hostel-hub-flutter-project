@@ -1,3 +1,4 @@
+# Hostel-hub-flutter-project
 # Flutter Learning Project
 
 ## Overview
@@ -39,5 +40,3 @@ See `docs/DART_BASICS.md` for:
 - Use Dart OOP features in Flutter
 - Build reactive UIs with setState()
 - Use Hot Reload for rapid development
-
-
